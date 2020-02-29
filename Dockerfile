@@ -35,8 +35,8 @@ RUN set -x \
     ## && pip3 install jupyter notebook pyzmq==16.0.2 tornado==4.5.3 ipykernel==4.8.1 \
     && pip3 install jupyterlab pyzmq==16.0.2 tornado==4.5.3 ipykernel==4.8.1 \
     ## install gophernotes
-    && cd /go/src/github.com/gopherdata/gophernotes \
-    && GOPATH=/go GO111MODULE=on go install . \
+    && go version \
+    && go get -v -ldflags "-s -w" github.com/gopherdata/gophernotes
     && cp /go/bin/gophernotes /usr/local/bin/ \
     && mkdir -p ~/.local/share/jupyter/kernels/gophernotes \
     && cp -r ./kernel/* ~/.local/share/jupyter/kernels/gophernotes \
